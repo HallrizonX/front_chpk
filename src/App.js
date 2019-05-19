@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import Header from './controllers/Includes/Header'
+
+import Groups from './controllers/Groups/Groups'
+import DetailGrout from './controllers/Groups/DetailGroup'
+
+import Teachers from './controllers/Teachers/Teachers'
+import DetailTeacher from './controllers/Teachers/DetailTeacher'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    window.DOMAIN_NAME = 'http://127.0.0.1:8000';
+    window.VERSION_API = '/api/v1';
+    window.API_URL = `${window.DOMAIN_NAME}${window.VERSION_API}`;
+    return (
+        <Router>
+            <Header/> {/* Here all routers */}
+            <div>
+                <Route path="/groups/:id/" exact component={DetailGrout}/>
+                <Route path="/groups/" exact component={Groups}/>
+
+                <Route path="/teachers/:id/" exact component={DetailTeacher}/>
+                <Route path="/teachers/" exact component={Teachers}/>
+
+            </div>
+        </Router>
+    );
 }
 
 export default App;
