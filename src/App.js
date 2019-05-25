@@ -12,6 +12,8 @@ import DetailTeacher from './controllers/Teachers/DetailTeacher'
 import Subjects from './controllers/Subjects/Subjects'
 import DetailSubject from './controllers/Subjects/DetailSubject'
 
+import News from './controllers/News/News'
+import DetailNews from './controllers/News/DetailNews'
 
 function App() {
     window.DOMAIN_NAME = 'http://127.0.0.1:8000'; // It can change
@@ -20,17 +22,19 @@ function App() {
     return (
         <Router>
             <Header/> {/* Here all routers which exists in project */}
-            <div>
-                <Route path="/groups/:id/" exact component={DetailGrout}/>
-                <Route path="/groups/" exact component={Groups}/>
 
-                <Route path="/teachers/:id/" exact component={DetailTeacher}/>
-                <Route path="/teachers/" exact component={Teachers}/>
 
-                <Route path="/subjects/:id/" exact component={DetailSubject}/>
-                <Route path="/subjects/" exact component={Subjects}/>
+            <Route path="/" exact component={News}/>
+            <Route path="/news/:id/" exact component={DetailNews}/>
 
-            </div>
+            <Route path="/groups/:id/" exact component={DetailGrout}/>
+            <Route path="/groups/" exact component={Groups}/>
+
+            <Route path="/teachers/:id/" exact component={DetailTeacher}/>
+            <Route path="/teachers/" exact component={Teachers}/>
+
+            <Route path="/subjects/:id/" exact component={DetailSubject}/>
+            <Route path="/subjects/" exact component={Subjects}/>
         </Router>
     );
 }

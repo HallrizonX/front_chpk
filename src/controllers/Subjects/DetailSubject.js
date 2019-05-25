@@ -17,7 +17,7 @@ class DetailSubject extends React.Component {
                 this.setState({subject});
             });
         // Get all teachers for current subject
-        axios.get(`${window.API_URL}/subjects/teachers/${id}/`)
+        axios.get(`${window.API_URL}/subjects/${id}/teachers/`)
             .then(res => {
                 const teachers = res.data.data.result;
                 this.setState({teachers});

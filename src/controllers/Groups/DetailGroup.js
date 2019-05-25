@@ -18,12 +18,12 @@ class DetailGroup extends React.Component {
                 const group = res.data.data.result;
                 this.setState({group});
                 // Get list of teachers from API
-                axios.get(`${window.API_URL}/groups/teachers/${group.number}/`)
+                axios.get(`${window.API_URL}/groups/${group.number}/teachers/`)
                     .then(res => {
                         const teachers = res.data.data.result;
                         this.setState({teachers});
                     });
-                axios.get(`${window.API_URL}/groups/subjects/${group.number}/`)
+                axios.get(`${window.API_URL}/groups/${group.number}/subjects/`)
                     .then(res => {
                         const subjects = res.data.data.result;
                         this.setState({subjects});
