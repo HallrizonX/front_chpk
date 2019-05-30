@@ -15,9 +15,12 @@ function Header() {
         <header>
             <nav className={'indigo lighten-5'}>
                 <div className="nav-wrapper ">
-                    <a style={{marginLeft: '10px'}} href="/" className="brand-logo"><img src='/LOGO.svg' width='56'/></a>
+                    <Link to={'/'}>
+                        <div style={{marginLeft: '10px'}} className="brand-logo"><img src='/LOGO.svg' width='56'/></div>
+                    </Link>
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i
-                        className="material-icons">menu</i></a>
+                        className="material-icons">menu</i>
+                    </a>
                     <ul className="right hide-on-med-and-down">
                         {links()}
                     </ul>

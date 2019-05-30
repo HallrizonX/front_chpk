@@ -21,15 +21,22 @@ class Groups extends React.Component {
         console.log(this.state.groups);
         return (
             <>
-                <h1>Groups</h1>
+                <div className="container">
 
-                {this.state.groups ? this.state.groups.map(group =>
-                    <div key={group.id}>
-                        <Link to={`/groups/${group.id}/`}>
-                            <li>{group.number}</li>
-                        </Link>
+                    <h2 className='center-align'>Групи</h2>
+                    <div className='row'>
+                        {this.state.groups ? this.state.groups.map(group =>
+
+                            <Link to={`/groups/${group.id}/`}>
+                                <div className='collapsible col s3 offset-s1'>
+                                    <div className="collapsible-header"><i className="material-icons">chrome_reader_mode</i>
+                                        <b>{group.number}</b>
+                                    </div>
+                                </div>
+                            </Link>
+                        ) : undefined}
                     </div>
-                ) : undefined}
+                </div>
             </>
         );
     }

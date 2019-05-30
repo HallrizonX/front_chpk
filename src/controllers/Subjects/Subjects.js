@@ -22,15 +22,20 @@ class Subjects extends React.Component {
         if (this.state.subjects) {
             return (
                 <>
-                    <h1>Subjects</h1>
-                    {this.state.subjects ? this.state.subjects.map(subject =>
-                        <div key={subject.id}>
-                            <Link to={`/subjects/${subject.id}/`}>
-                                <h3>{subject.name} : {subject.group.number}</h3>
-                            </Link>
-
+                    <div className="container">
+                        <h2 className='center-align'>Предмети</h2>
+                        <div className='row'>
+                            {this.state.subjects ? this.state.subjects.map(subject =>
+                                <Link to={`/subjects/${subject.id}/`}>
+                                    <div className='collapsible col s3 offset-s1'>
+                                        <div className="collapsible-header"><i className="material-icons">class</i>
+                                            <b>{subject.name} : {subject.group.number}</b>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ) : undefined}
                         </div>
-                    ) : undefined}
+                    </div>
                 </>
             );
         }else{

@@ -22,31 +22,63 @@ class DetailSubject extends React.Component {
                 const teachers = res.data.data.result;
                 this.setState({teachers});
             });
+        axios.get(`${window.API_URL}/subjects/${id}/files/`)
+            .then(res => {
+                const files = res.data.data.result;
+                this.setState({files});
+            });
     }
 
     render() {
         console.log(this.state.subject);
         console.log(this.state.teachers);
-        if (this.state.subject) {
+        console.log(this.state.files);
+        if (this.state.subject && this.state.teachers && this.state.files) {
             return (
                 <>
-                    <h1>Detail Subject</h1>
-                    <p>Предмет: {this.state.subject.name}</p>
-                    <Link to={`/groups/${this.state.subject.group.id}/`}>
-                        <p>Група: {this.state.subject.group.number}</p>
-                    </Link>
-                    <h4>Викладачі які викладають предмет</h4>
-                    <ul>
-                        {this.state.teachers ? this.state.teachers.map(teacher =>
-                            <div key={teacher.id}>
-                                <Link to={`/teachers/${teacher.id}/`}>
-                                    <li>
-                                        <p>{teacher.profile.surname} {teacher.profile.name} {teacher.profile.last_name}</p>
-                                    </li>
-                                </Link>
+                    <div className="container">
+                        <h2 className='center-align'>
+                            <b>{this.state.subject ? this.state.subject.name : undefined}</b> - <b>{this.state.subject ? this.state.subject.group.number : undefined}</b>
+                        </h2>
+                        <div className={'divider'}>
+                        </div>
+                        <div className='row'>
+                            <div className='col s6'>
+                                <h5 className={'center-align col s12'}>Викладачі</h5>
+                                {this.state.teachers ? this.state.teachers.map(teacher =>
+                                    <div key={teacher.id}>
+                                        <Link to={`/teachers/${teacher.id}/`}>
+                                            <h6 className=' center-align col s12'>{`${teacher.profile.surname} ${teacher.profile.name} ${teacher.profile.last_name}`} </h6>
+                                        </Link>
+                                    </div>
+                                ) : undefined}
                             </div>
-                        ) : undefined}
-                    </ul>
+                            <div className='col s6' style={{borderLeft: '1px solid gray '}}>
+                                <h5 className={'center-align col s12'}>Опис</h5>
+                                {this.state.subjects ? this.state.subjects.map(subject =>
+                                    <div key={subject.id}>
+                                        <Link to={`/subjects/${subject.id}/`}>
+                                            <h6 className=' center-align col s12'>{subject.name}</h6>
+                                        </Link>
+                                    </div>
+                                ) : undefined}
+
+                            </div>
+                        </div>
+                        <div className={'divider'}></div>
+                        <h2 className='center-align'>Файли</h2>
+                        <div className={'row'}>
+                            <div className="collection col s8 offset-s2" style={{padding: 10}}>
+                                {this.state.files.map(file =>
+                                    <a download href={`${window.DOMAIN_NAME}${file.file}`} className="center-align collection-item">
+                                        <b>{file.title}</b>
+                                    </a>
+                                )}
+
+                            </div>
+                        </div>
+                    </div>
+
                 </>
             );
         } else {

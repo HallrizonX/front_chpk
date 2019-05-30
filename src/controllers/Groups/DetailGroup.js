@@ -37,25 +37,36 @@ class DetailGroup extends React.Component {
         console.log(this.state.subjects);
         return (
             <>
-                <h1>Detail</h1>
-                <h1>Викладачі які викладають у {this.state.group ? this.state.group.number: undefined}</h1>
-                {this.state.teachers ? this.state.teachers.map(teacher =>
-                    <div key={teacher.id}>
-                        <Link to={`/teachers/${teacher.id}/`}>
-                            <h5>ПІП: {`${teacher.profile.surname} ${teacher.profile.name} ${teacher.profile.last_name}`} </h5>
-
-                        </Link>
+                <div className="container">
+                    <h2 className='center-align'><b>{this.state.group ? this.state.group.number : undefined}</b> група
+                    </h2>
+                    <div className={'divider'}>
                     </div>
-                ) : undefined}
+                    <div className='row'>
+                        <div className='col s6'>
+                            <h5 className={'center-align col s12'}>Викладачі</h5>
+                            {this.state.teachers ? this.state.teachers.map(teacher =>
+                                <div key={teacher.id}>
+                                    <Link to={`/teachers/${teacher.id}/`}>
+                                        <h6 className=' center-align col s12'>{`${teacher.profile.surname} ${teacher.profile.name} ${teacher.profile.last_name}`} </h6>
+                                    </Link>
+                                </div>
+                            ) : undefined}
+                        </div>
+                        <div className='col s6' style={{borderLeft: '1px solid gray '}}>
+                            <h5 className={'center-align col s12'}>Предмети</h5>
+                            {this.state.subjects ? this.state.subjects.map(subject =>
+                                <div key={subject.id}>
+                                    <Link to={`/subjects/${subject.id}/`}>
+                                        <h6 className=' center-align col s12'>{subject.name}</h6>
+                                    </Link>
+                                </div>
+                            ) : undefined}
 
-                <h1>Предмети які викладають у {this.state.group ? this.state.group.number: undefined}</h1>
-                {this.state.subjects ? this.state.subjects.map(subject =>
-                    <div key={subject.id}>
-                        <Link to={`/subjects/${subject.id}/`}>
-                            <h1>{subject.name}</h1>
-                        </Link>
+                        </div>
                     </div>
-                ) : undefined}
+                    <div className={'divider'}> </div>
+                </div>
             </>
         );
     }
