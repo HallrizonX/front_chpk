@@ -5,6 +5,7 @@ function Header() {
     var links = () => {
         return (
             <div >
+                <li><Link to="/office/"><b style={{color: "#324051"}}>Офіс</b></Link></li>
                 <li><Link to="/groups/"><b style={{color: "#324051"}}>Групи</b></Link></li>
                 <li><Link to="/teachers/"><b style={{color: "#324051"}}>Викладачі</b></Link></li>
                 <li><Link to="/subjects/"><b style={{color: "#324051"}}>Предмети</b></Link></li>

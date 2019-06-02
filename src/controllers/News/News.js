@@ -13,7 +13,10 @@ class News extends React.Component {
             .then(res => {
                 const news = res.data.data.result;
                 this.setState({news});
-            });
+            }).catch(err=>{
+                console.log(err);
+                localStorage.removeItem('token');
+        })
     }
 
     render() {

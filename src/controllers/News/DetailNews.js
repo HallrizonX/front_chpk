@@ -2,8 +2,6 @@ import React from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-import MainImage from './MainImage';
-
 class DetailNews extends React.Component {
     state = {
         news: null,
@@ -24,7 +22,7 @@ class DetailNews extends React.Component {
                 const news = res.data.data.result;
                 this.setState({news});
                 this.setState({main_img: news.preview_image})
-            });
+            })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

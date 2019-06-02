@@ -30,9 +30,12 @@ class Authorization extends React.Component {
                 'password': this.password.value,
             }
         }).done(function(res) {
-            window.localStorage.setItem('token', "JWT "+ res.data.token);
+            var token = res.data.token;
+            window.localStorage.setItem('token', "JWT "+ token);
             window.location.reload()
-        });
+        }).catch(err=>{
+            console.log(err);
+        })
 
 
     };
@@ -69,8 +72,7 @@ class Authorization extends React.Component {
                                                 <button onClick={this.auth}
                                                         className="col s12 btn cyan waves-effect waves-light"
                                                         type="submit"
-                                                        name="action"><i
-                                                    className="mdi-action-lock-open"></i> Авторизація
+                                                        name="action"><i className="mdi-action-lock-open"></i> Авторизація
                                                 </button>
                                             </div>
                                         </div>
