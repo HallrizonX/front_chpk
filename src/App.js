@@ -19,7 +19,7 @@ import Authorization from './controllers/Authorization/Authorization';
 
 import Office from './controllers/Office/';
 
-window.DOMAIN_NAME = 'http://127.0.0.1:8000'; // It can change
+window.DOMAIN_NAME = 'http://192.168.1.104:8000'; // It can change
 window.VERSION_API = '/api/v1'; // Version API
 window.API_URL = `${window.DOMAIN_NAME}${window.VERSION_API}`;
 
